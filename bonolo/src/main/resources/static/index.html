@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviro365 - Withdrawal Notices</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Enviro365 Investments</h1>
+
+    <section id="portfolio-section">
+        <h2>Portfolio</h2>
+        <label for="investorId">Investor ID:</label>
+        <input type="number" id="investorId" value="1">
+        <button id="loadPortfolioBtn">Load Portfolio</button>
+
+        <div id="investorInfo"></div>
+
+        <table id="productsTable">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Type</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <section id="withdrawal-section">
+        <h2>Submit a Withdrawal</h2>
+        <form id="withdrawalForm">
+            <label for="productId">Product ID:</label>
+            <input type="number" id="productId" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" step="0.01" required>
+
+            <button type="submit">Submit Withdrawal</button>
+        </form>
+        <div id="withdrawalMessage"></div>
+    </section>
+
+    <section id="history-section">
+        <h2>Withdrawal History</h2>
+        <label for="historyProductId">Product ID:</label>
+        <input type="number" id="historyProductId" value="2">
+        <button id="loadHistoryBtn">Load History</button>
+
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>Withdrawal ID</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <section id="export-section">
+        <h2>Export Statement</h2>
+        <label for="exportInvestorId">Investor ID:</label>
+        <input type="number" id="exportInvestorId" value="1">
+        <button id="downloadCsvBtn">Download CSV</button>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
