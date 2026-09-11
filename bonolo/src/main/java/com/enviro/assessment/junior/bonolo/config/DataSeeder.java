@@ -23,8 +23,9 @@ public class DataSeeder implements CommandLineRunner {
         Investor investor1 = investorRepository.save(new Investor(null, "Thabo Mokoena", 70, 0));
         productRepository.save(new Product(null, "Golden Years Retirement Fund", "RETIREMENT", 100000, investor1));
         productRepository.save(new Product(null, "Flexible Savings", "SAVINGS", 50000, investor1));
-
+        
         Investor investor2 = investorRepository.save(new Investor(null, "Naledi Dube", 40, 0));
         productRepository.save(new Product(null, "Unit Trust Growth Plan", "UNIT_TRUST", 30000, investor2));
+        productRepository.save(new Product(null, "Early Retirement Fund", "RETIREMENT", 20000, investor2));
     }
 }
