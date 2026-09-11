@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -28,7 +29,7 @@ public class WithdrawalController {
     }
 
     @PostMapping("/withdrawals")
-    public ResponseEntity<WithdrawalResponseDTO> submitWithdrawal(@RequestBody WithdrawalRequestDTO request) {
+    public ResponseEntity<WithdrawalResponseDTO> submitWithdrawal(@Valid @RequestBody WithdrawalRequestDTO request) {
         return ResponseEntity.ok(withdrawalService.submitWithdrawal(request));
     }
 
