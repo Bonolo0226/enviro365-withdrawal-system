@@ -2,73 +2,141 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviro365 - Withdrawal Notices</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Enviro365 Investments</h1>
+    <header>
+        <div class="header-left">
+            <div class="logo-mark">E3</div>
+            <div class="header-title">
+                <h1>Enviro365 Investments</h1>
+                <p>Investor Withdrawal Portal</p>
+            </div>
+        </div>
+        <span class="badge">Internal Portal</span>
+    </header>
 
-    <section id="portfolio-section">
-        <h2>Portfolio</h2>
-        <label for="investorId">Investor ID:</label>
-        <input type="number" id="investorId" value="1">
-        <button id="loadPortfolioBtn">Load Portfolio</button>
+    <main>
+        <section id="portfolio-section">
+            <h2>
+                <span class="section-heading-group">
+                    <span class="section-icon">P</span>
+                    Portfolio
+                </span>
+            </h2>
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="investorId">Investor ID</label>
+                    <input type="number" id="investorId" value="1">
+                </div>
+                <button id="loadPortfolioBtn">
+                    <span class="btn-text">Load Portfolio</span>
+                </button>
+            </div>
 
-        <div id="investorInfo"></div>
+            <div class="investor-info" id="investorInfo" style="display:none;"></div>
 
-        <table id="productsTable">
-            <thead>
-                <tr>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Type</th>
-                    <th>Balance</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </section>
+            <div class="table-wrap">
+                <table id="productsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Type</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="empty-row"><td colspan="4">No portfolio loaded yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    <section id="withdrawal-section">
-        <h2>Submit a Withdrawal</h2>
-        <form id="withdrawalForm">
-            <label for="productId">Product ID:</label>
-            <input type="number" id="productId" required>
+        <section id="withdrawal-section">
+            <h2>
+                <span class="section-heading-group">
+                    <span class="section-icon">W</span>
+                    Submit a Withdrawal
+                </span>
+            </h2>
+            <form id="withdrawalForm">
+                <div class="field-row">
+                    <div class="field-group">
+                        <label for="productId">Product ID</label>
+                        <input type="number" id="productId" required>
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" step="0.01" required>
+                    </div>
+                </div>
+                <button type="submit" class="full-btn">
+                    <span class="btn-text">Submit Withdrawal</span>
+                </button>
+                <div class="form-message" id="withdrawalMessage"></div>
+            </form>
+        </section>
 
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" step="0.01" required>
+        <section id="history-section" class="full-width">
+            <h2>
+                <span class="section-heading-group">
+                    <span class="section-icon">H</span>
+                    Withdrawal History
+                </span>
+            </h2>
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="historyProductId">Product ID</label>
+                    <input type="number" id="historyProductId" value="2">
+                </div>
+                <button id="loadHistoryBtn">
+                    <span class="btn-text">Load History</span>
+                </button>
+            </div>
 
-            <button type="submit">Submit Withdrawal</button>
-        </form>
-        <div id="withdrawalMessage"></div>
-    </section>
+            <div class="table-wrap">
+                <table id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="empty-row"><td colspan="4">No history loaded yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    <section id="history-section">
-        <h2>Withdrawal History</h2>
-        <label for="historyProductId">Product ID:</label>
-        <input type="number" id="historyProductId" value="2">
-        <button id="loadHistoryBtn">Load History</button>
+        <section id="export-section" class="full-width">
+            <h2>
+                <span class="section-heading-group">
+                    <span class="section-icon">X</span>
+                    Export Statement
+                </span>
+            </h2>
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="exportInvestorId">Investor ID</label>
+                    <input type="number" id="exportInvestorId" value="1">
+                </div>
+                <button id="downloadCsvBtn" class="secondary">
+                    <span class="btn-text">Download CSV</span>
+                </button>
+            </div>
+        </section>
+    </main>
 
-        <table id="historyTable">
-            <thead>
-                <tr>
-                    <th>Withdrawal ID</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </section>
-
-    <section id="export-section">
-        <h2>Export Statement</h2>
-        <label for="exportInvestorId">Investor ID:</label>
-        <input type="number" id="exportInvestorId" value="1">
-        <button id="downloadCsvBtn">Download CSV</button>
-    </section>
+    <div id="toastContainer"></div>
 
     <script src="app.js"></script>
 </body>
